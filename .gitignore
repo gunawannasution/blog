@@ -1,0 +1,84 @@
+*.log
+.DS_Store
+.env
+.env.backup
+.env.production
+.phpactor.json
+.phpunit.result.cache
+/.cursor/
+/.idea
+/.nova
+/.phpunit.cache
+/.vscode
+/.zed
+/auth.json
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+/vendor
+_ide_helper.php
+Homestead.json
+Homestead.yaml
+Thumbs.db
+# =========================
+# LARAVEL CORE
+# =========================
+/vendor
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/storage/app/*
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/logs/*
+
+# =========================
+# ENV & CONFIG
+# =========================
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+
+# =========================
+# VITE / FRONTEND
+# =========================
+/node_modules
+/public/build
+/dist
+/.vite
+
+# =========================
+# IDE / EDITOR
+# =========================
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# =========================
+# OS FILES
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# TEST / DEBUG
+# =========================
+/coverage
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# =========================
+# OPTIONAL (kalau pakai)
+# =========================
+/docker
+/docker-compose.override.yml
