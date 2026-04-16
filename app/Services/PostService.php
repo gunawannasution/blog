@@ -1,49 +1,46 @@
 <?php
+
 namespace App\Services;
-use App\Models\Post;
+
 use App\Repositories\Contracts\PostRepositoryInterface;
-use Illuminate\Support\Str;
 
 class PostService
 {
-    public function __construct(protected PostRepositoryInterface $repo)
-    {
+    public function __construct(private PostRepositoryInterface $postRepo) {}
 
+    public function getHomePost()
+    {
+        return $this->postRepo->getPublishedPaginated(12);
     }
 
-    public function list()
+    public function getSinglePost(string $slug)
     {
-        return $this->repo->paginatePublished();
+        return $this->postRepo->findBySlug($slug);
     }
 
-    public function detail(string $slug)
+    // TAMBAHKAN INI: Untuk keperluan Edit di Admin
+    public function getSinglePostById(int $id)
     {
-        return $this->repo->findBySlug($slug);
+        return $this->postRepo->findById($id);
     }
 
-    public function create(array $data)
+    public function storePost(array $data)
     {
-        $data['slug']=Str::slug($data['title']);
-
-        if(!empty($data['is_published']))
-            {
-                $data['published_at']=now();
-            }
-            return $this->repo->create($data);
+        return $this->postRepo->create($data);
     }
 
-    public function update(Post $post, array $data)
+    public function getAllPostsForAdmin()
     {
-        if (isset($data['title'])) {
-            $data['slug'] = Str::slug($data['title']);
-        }
-
-        return $this->repo->update($post, $data);
+        return $this->postRepo->getAllAdmin();
     }
 
-    public function delete(Post $post)
+    public function updatePost(int $id, array $data)
     {
-        return $this->repo->delete($post);
+        return $this->postRepo->update($id, $data);
     }
 
+    public function deletePost(int $id)
+    {
+        return $this->postRepo->delete($id);
+    }
 }
